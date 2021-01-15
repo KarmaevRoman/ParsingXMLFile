@@ -21,49 +21,41 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="Link"                 
-                 Text="{Binding Link, UpdateSourceTrigger=PropertyChanged}"
-                 Height="28" 
-                 Margin="50,35,50,0" 
-                 TextWrapping="Wrap" 
-                 VerticalAlignment="Top" 
-                 Grid.Row="0" 
-                 Grid.ColumnSpan="2"/>
-            <Button x:Name="LoadFileButton" 
-                Command="{Binding LoadXmlFile}"
-                Content="Загрузка файла"  
-                Height="34" 
-                VerticalAlignment="Center" 
-                Margin="75,24,123,17"                 
-                Grid.Row="1" Grid.Column="0"/>
+            <TextBox Grid.Row="0" Grid.ColumnSpan="2"    
+                     Text="{Binding Link, UpdateSourceTrigger=PropertyChanged}"
+                     Height="28" 
+                     Margin="50,35,50,0" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"/>
+            <Button Grid.Row="1" Grid.Column="0" 
+                    Command="{Binding LoadXmlFile}"
+                    Content="Загрузка файла"  
+                    Height="34" 
+                    VerticalAlignment="Center" 
+                    Margin="75,24,123,17"/>
             <TreeView ItemsSource="{Binding TreeElements}"
-                  x:Name="tree" 
-                  Grid.Row="2" 
-                  Margin="50,30,50,30" 
-                  Grid.Column="0" 
-                  Grid.ColumnSpan="2">
+                      Grid.ColumnSpan="2"
+                      Grid.Row="2" Grid.Column="0" 
+                      Margin="50,30,50,30">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding TreeElements}">
-                        <TextBlock Text="{Binding name}" />
+                        <TextBlock Text="{Binding Name}" />
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <Button x:Name="GetTreeButton" 
-                Command="{Binding ParcingFile}"
-                Content="Построить дерево" 
-                Height="34" 
-                VerticalAlignment="Center"
-                Margin="123,22,75,15" 
-                IsEnabled="True"
-                Grid.Row="1"
-                Grid.Column="1"/>
-            <Label Content="Введите ссылку на XML файл"
-               HorizontalAlignment="Left"
-               Height="34"
-               Margin="54,10,0,0" 
-               VerticalAlignment="Top"
-               Width="295" 
-               Grid.Row="0"/>
+            <Button Grid.Row="1" Grid.Column="1"
+                    Command="{Binding ParcingFile}"
+                    Content="Построить дерево" 
+                    Height="34" 
+                    VerticalAlignment="Center"
+                    Margin="123,22,75,15"/>
+            <Label Grid.Row="0" Grid.Column="0"
+                   Content="Введите ссылку на XML файл"
+                   HorizontalAlignment="Left"
+                   Height="34"
+                   Margin="54,10,0,0" 
+                   VerticalAlignment="Top"
+                   Width="295"/>
         </Grid>
     </Grid>
 </Window>

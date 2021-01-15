@@ -1,12 +1,7 @@
 ﻿using ParsingXMLFile.ViewModel.Base;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml;
-using System.Windows.Controls;
 using System.Windows;
 using System.IO;
 using ParsingXMLFile.Models;
@@ -24,17 +19,17 @@ namespace ParsingXMLFile.ViewModel
             set => Set(ref _link, value);
         }
 
-        private ObservableCollection<TreeElement> treeElements;
+        private ObservableCollection<TreeElement> _treeElements;
 
         public ObservableCollection<TreeElement> TreeElements
         {
-            get => treeElements;
-            set => Set(ref treeElements, value);
+            get => _treeElements;
+            set => Set(ref _treeElements, value);
         }
 
         public ICommand LoadXmlFile { get; }
-        private bool canLoadXmlFileExecute(object p) => true;
-        private void onLoadXmlFileExecute(object p)
+        private bool CanLoadXmlFileExecute(object p) => true;
+        private void OnLoadXmlFileExecute(object p)
         {
             var xmlFile = new XmlDocument();
             if (Link == null)
@@ -56,12 +51,12 @@ namespace ParsingXMLFile.ViewModel
         }
 
         public ICommand ParcingFile { get; }
-        private bool canParcingFileExecute (object p)
+        private bool CanParcingFileExecute (object p)
         {
             return File.Exists("myfile.xml");
         }
 
-        private void onParcingFileExecute(object p)
+        private void OnParcingFileExecute(object p)
         {
             var xmlFile = new XmlDocument();
             TreeElements = new ObservableCollection<TreeElement>();
@@ -74,8 +69,8 @@ namespace ParsingXMLFile.ViewModel
 
         public ViewModel()
         {
-            LoadXmlFile = new LambdaCommand(onLoadXmlFileExecute, canLoadXmlFileExecute);
-            ParcingFile = new LambdaCommand(onParcingFileExecute, canParcingFileExecute);
+            LoadXmlFile = new LambdaCommand(OnLoadXmlFileExecute, CanLoadXmlFileExecute);
+            ParcingFile = new LambdaCommand(OnParcingFileExecute, CanParcingFileExecute);
         }
     }
 }

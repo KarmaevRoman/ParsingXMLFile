@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Xml;
 
 namespace ParsingXMLFile.Models
 {
     class TreeElement
     {
-        public string name { get; set; }
+        public string Name { get; set; }
 
         public ObservableCollection<TreeElement> TreeElements { get; set; }
 
@@ -23,10 +18,10 @@ namespace ParsingXMLFile.Models
         public void AddTreeElementFromXml (XmlElement xmlElement)
         {
             TreeElements = new ObservableCollection<TreeElement>();
-            name = xmlElement.Name;                
+            Name = xmlElement.Name;                
            
             foreach (XmlAttribute SelectAtr in xmlElement.Attributes)
-                name += ($" {SelectAtr.Name} = '{SelectAtr.Value}'");
+                Name += ($" {SelectAtr.Name} = '{SelectAtr.Value}'");
 
             foreach (var ChildElemennt in xmlElement.ChildNodes)
             {
@@ -39,7 +34,7 @@ namespace ParsingXMLFile.Models
 
                 if (ChildElemennt is XmlText text)
                 {
-                    name += ($" - {text.Value}");
+                    Name += ($" - {text.Value}");
                 }
             }
         }
