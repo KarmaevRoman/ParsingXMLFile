@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ParsingXMLFile.ViewModel
+namespace ParsingXMLFile.ViewModel.Base
 {
     internal abstract class ButtonCommand : ICommand
     {

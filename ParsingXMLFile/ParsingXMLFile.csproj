@@ -64,8 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\TreeElement.cs" />
+    <Compile Include="ViewModel\LambdaCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ButtonCommand.cs" />
+    <Compile Include="ViewModel\Base\ButtonCommand.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
