@@ -7,6 +7,54 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="Link"                 
+                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                 Height="28" 
+                 Margin="50,35,50,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Grid.Row="0" 
+                 Grid.ColumnSpan="2"/>
+            <Button x:Name="LoadFileButton" 
+                Command="{Binding LoadFile}"
+                Content="Загрузка файла"  
+                Height="34" 
+                VerticalAlignment="Center" 
+                Margin="75,24,123,17"                 
+                Grid.Row="1" Grid.Column="0"/>
+            <TreeView DataContext="{Binding treeView, UpdateSourceTrigger=PropertyChanged}"
+                  x:Name="tree" 
+                  Grid.Row="2" 
+                  Margin="50,30,50,30" 
+                  Grid.Column="0" 
+                  Grid.ColumnSpan="2">
+            </TreeView>
+            <Button x:Name="GetTreeButton" 
+                Command="{Binding ParcedFile}"
+                Content="Построить дерево" 
+                Height="34" 
+                VerticalAlignment="Center"
+                Margin="123,22,75,15" 
+                IsEnabled="True"
+                Grid.Row="1"
+                Grid.Column="1"/>
+            <Label Content="Введите ссылку на XML файл"
+               HorizontalAlignment="Left"
+               Height="34"
+               Margin="54,10,0,0" 
+               VerticalAlignment="Top"
+               Width="295" 
+               Grid.Row="0"/>
+        </Grid>
     </Grid>
 </Window>
