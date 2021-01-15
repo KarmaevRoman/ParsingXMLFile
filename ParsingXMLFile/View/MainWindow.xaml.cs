@@ -25,6 +25,7 @@ namespace ParsingXMLFile
         public MainWindow()
         {
             InitializeComponent();            
-        }        
+        }
+       
     }
 }

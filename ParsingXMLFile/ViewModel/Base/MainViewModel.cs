@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Specialized;
 
-namespace ParsingXMLFile.ViewModel
+namespace ParsingXMLFile.ViewModel.Base
 {
     abstract class MainViewModel : INotifyPropertyChanged
     {

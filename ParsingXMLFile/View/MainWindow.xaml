@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ParsingXMLFile"
+        xmlns:l="clr-namespace:ParsingXMLFile.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <l:ViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,7 +22,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="Link"                 
-                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding Link, UpdateSourceTrigger=PropertyChanged}"
                  Height="28" 
                  Margin="50,35,50,0" 
                  TextWrapping="Wrap" 
@@ -26,21 +30,26 @@
                  Grid.Row="0" 
                  Grid.ColumnSpan="2"/>
             <Button x:Name="LoadFileButton" 
-                Command="{Binding LoadFile}"
+                Command="{Binding LoadXmlFile}"
                 Content="Загрузка файла"  
                 Height="34" 
                 VerticalAlignment="Center" 
                 Margin="75,24,123,17"                 
                 Grid.Row="1" Grid.Column="0"/>
-            <TreeView DataContext="{Binding treeView, UpdateSourceTrigger=PropertyChanged}"
+            <TreeView ItemsSource="{Binding TreeElements}"
                   x:Name="tree" 
                   Grid.Row="2" 
                   Margin="50,30,50,30" 
                   Grid.Column="0" 
                   Grid.ColumnSpan="2">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding TreeElements}">
+                        <TextBlock Text="{Binding name}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
             </TreeView>
             <Button x:Name="GetTreeButton" 
-                Command="{Binding ParcedFile}"
+                Command="{Binding ParcingFile}"
                 Content="Построить дерево" 
                 Height="34" 
                 VerticalAlignment="Center"
