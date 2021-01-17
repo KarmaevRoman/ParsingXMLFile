@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ParsingXMLFile.ViewModel.Base
 {
-    abstract class MainViewModel : INotifyPropertyChanged
+    abstract class BaisViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

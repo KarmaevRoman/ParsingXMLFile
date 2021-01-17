@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace ParsingXMLFile.ViewModel
 {
-    class ViewModel : MainViewModel
+    class MainViewModel : BaisViewModel
     {
         private string _link;
         
@@ -56,7 +56,7 @@ namespace ParsingXMLFile.ViewModel
             File.Delete("temp_file.xml");
         }
 
-        public ViewModel()
+        public MainViewModel()
         {
             LoadXmlFile = new LambdaCommand(OnLoadXmlFileExecute, CanLoadXmlFileExecute);
             ParcingFile = new LambdaCommand(OnParcingFileExecute, CanParcingFileExecute);
