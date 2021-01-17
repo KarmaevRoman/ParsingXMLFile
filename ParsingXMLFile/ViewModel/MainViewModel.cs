@@ -12,14 +12,14 @@ namespace ParsingXMLFile.ViewModel
     class MainViewModel : BaisViewModel
     {
         private string _link;
-        
+
+        private ObservableCollection<TreeElement> _treeElements;
+
         public string Link
         {
             get => _link;
             set => Set(ref _link, value);
-        }
-
-        private ObservableCollection<TreeElement> _treeElements;
+        }        
 
         public ObservableCollection<TreeElement> TreeElements
         {
@@ -28,7 +28,18 @@ namespace ParsingXMLFile.ViewModel
         }
 
         public ICommand LoadXmlFile { get; }
+
+        public MainViewModel()
+        {
+            LoadXmlFile = new LambdaCommand(OnLoadXmlFileExecute, CanLoadXmlFileExecute);
+            ParcingFile = new LambdaCommand(OnParcingFileExecute, CanParcingFileExecute);
+            TreeElements = new ObservableCollection<TreeElement>();
+        }
+
+        public ICommand ParcingFile { get; }
+
         private bool CanLoadXmlFileExecute(object p) => true;
+
         private void OnLoadXmlFileExecute(object p)
         {
             var xmlFile = new XmlDocument();
@@ -39,8 +50,7 @@ namespace ParsingXMLFile.ViewModel
                 TryLoadXmlFile(xmlFile);
             }
         }
-
-        public ICommand ParcingFile { get; }
+        
         private bool CanParcingFileExecute (object p)
         {
             return File.Exists("temp_file.xml");
@@ -54,14 +64,7 @@ namespace ParsingXMLFile.ViewModel
             treeElement.AddTreeElementFromXml(xmlFile.DocumentElement);
             TreeElements.Add(treeElement);
             File.Delete("temp_file.xml");
-        }
-
-        public MainViewModel()
-        {
-            LoadXmlFile = new LambdaCommand(OnLoadXmlFileExecute, CanLoadXmlFileExecute);
-            ParcingFile = new LambdaCommand(OnParcingFileExecute, CanParcingFileExecute);
-            TreeElements = new ObservableCollection<TreeElement>();
-        }
+        }        
 
         private void TryLoadXmlFile(XmlDocument xmlFile)
         {
