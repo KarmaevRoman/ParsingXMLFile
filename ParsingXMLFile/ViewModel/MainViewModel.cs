@@ -19,7 +19,7 @@ namespace ParsingXMLFile.ViewModel
             set => Set(ref _link, value);
         }
 
-        private ObservableCollection<TreeElement> _treeElements = new ObservableCollection<TreeElement>();
+        private ObservableCollection<TreeElement> _treeElements;
 
         public ObservableCollection<TreeElement> TreeElements
         {
@@ -60,6 +60,7 @@ namespace ParsingXMLFile.ViewModel
         {
             LoadXmlFile = new LambdaCommand(OnLoadXmlFileExecute, CanLoadXmlFileExecute);
             ParcingFile = new LambdaCommand(OnParcingFileExecute, CanParcingFileExecute);
+            TreeElements = new ObservableCollection<TreeElement>();
         }
 
         private void TryLoadXmlFile(XmlDocument xmlFile)
