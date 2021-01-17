@@ -8,13 +8,7 @@ namespace ParsingXMLFile.Models
         public string Name { get; set; }
 
         public ObservableCollection<TreeElement> TreeElements { get; set; }
-
-        public void Add (TreeElement ChildElement)
-        {
-            TreeElements = new ObservableCollection<TreeElement>();
-            TreeElements.Add(ChildElement);
-        }
-        
+              
         public void AddTreeElementFromXml (XmlElement xmlElement)
         {
             TreeElements = new ObservableCollection<TreeElement>();
