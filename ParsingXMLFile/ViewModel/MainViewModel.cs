@@ -11,6 +11,7 @@ namespace ParsingXMLFile.ViewModel
 {
     class MainViewModel : BaisViewModel
     {
+        const string temp_file = "temp_file.xml";
         private string _link;
 
         private ObservableCollection<TreeElement> _treeElements;
@@ -53,17 +54,17 @@ namespace ParsingXMLFile.ViewModel
         
         private bool CanParcingFileExecute (object p)
         {
-            return File.Exists("temp_file.xml");
+            return File.Exists(temp_file);
         }
 
         private void OnParcingFileExecute(object p)
         {
             var xmlFile = new XmlDocument();            
-            xmlFile.Load("temp_file.xml");
+            xmlFile.Load(temp_file);
             var treeElement = new TreeElement();
             treeElement.AddTreeElementFromXml(xmlFile.DocumentElement);
             TreeElements.Add(treeElement);
-            File.Delete("temp_file.xml");
+            File.Delete(temp_file);
         }        
 
         private void TryLoadXmlFile(XmlDocument xmlFile)
@@ -71,7 +72,7 @@ namespace ParsingXMLFile.ViewModel
             try
             {
                 xmlFile.Load(Link);
-                xmlFile.Save("temp_file.xml");
+                xmlFile.Save(temp_file);
                 MessageBox.Show("Файл успешно загружен.");
             }
 
