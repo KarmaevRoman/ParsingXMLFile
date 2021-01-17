@@ -17,16 +17,16 @@ namespace ParsingXMLFile.Models
             foreach (XmlAttribute SelectAtr in xmlElement.Attributes)
                 Name += ($" {SelectAtr.Name} = '{SelectAtr.Value}'");
 
-            foreach (var ChildElemennt in xmlElement.ChildNodes)
+            foreach (var сhildElemennt in xmlElement.ChildNodes)
             {
-                if (ChildElemennt is XmlElement)
+                if (сhildElemennt is XmlElement)
                 {                    
                     var SubElement = new TreeElement();
                     TreeElements.Add(SubElement);
-                    SubElement.AddTreeElementFromXml((XmlElement)ChildElemennt);
+                    SubElement.AddTreeElementFromXml((XmlElement)сhildElemennt);
                 }
 
-                if (ChildElemennt is XmlText text)
+                if (сhildElemennt is XmlText text)
                 {
                     Name += ($" - {text.Value}");
                 }
