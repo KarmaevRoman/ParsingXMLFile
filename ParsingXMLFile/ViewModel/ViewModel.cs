@@ -19,7 +19,7 @@ namespace ParsingXMLFile.ViewModel
             set => Set(ref _link, value);
         }
 
-        private ObservableCollection<TreeElement> _treeElements;
+        private ObservableCollection<TreeElement> _treeElements = new ObservableCollection<TreeElement>();
 
         public ObservableCollection<TreeElement> TreeElements
         {
@@ -48,8 +48,7 @@ namespace ParsingXMLFile.ViewModel
 
         private void OnParcingFileExecute(object p)
         {
-            var xmlFile = new XmlDocument();
-            TreeElements = new ObservableCollection<TreeElement>();
+            var xmlFile = new XmlDocument();            
             xmlFile.Load("temp_file.xml");
             var treeElement = new TreeElement();
             treeElement.AddTreeElementFromXml(xmlFile.DocumentElement);
