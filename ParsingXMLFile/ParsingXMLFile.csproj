@@ -63,7 +63,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\LoadXmlFile.cs" />
     <Compile Include="Models\TreeElement.cs" />
     <Compile Include="ViewModel\LambdaCommand.cs" />
     <Compile Include="ViewModel\Base\BaisViewModel.cs" />
