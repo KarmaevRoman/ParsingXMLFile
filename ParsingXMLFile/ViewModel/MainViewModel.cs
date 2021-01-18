@@ -13,7 +13,6 @@ namespace ParsingXMLFile.ViewModel
     {
         const string temp_file = "temp_file.xml";
         private string _link;
-
         private ObservableCollection<TreeElement> _treeElements;
 
         public string Link
