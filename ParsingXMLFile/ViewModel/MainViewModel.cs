@@ -29,14 +29,14 @@ namespace ParsingXMLFile.ViewModel
 
         public ICommand LoadXmlFile { get; }
 
+        public ICommand ParcingFile { get; }
+
         public MainViewModel()
         {
             LoadXmlFile = new LambdaCommand(OnLoadXmlFileExecute, CanLoadXmlFileExecute);
             ParcingFile = new LambdaCommand(OnParcingFileExecute, CanParcingFileExecute);
             TreeElements = new ObservableCollection<TreeElement>();
-        }
-
-        public ICommand ParcingFile { get; }
+        }        
 
         private bool CanLoadXmlFileExecute(object p) => true;
 
